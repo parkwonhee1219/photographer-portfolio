@@ -1,65 +1,184 @@
+import Navbar from "@/components/navbar";
 import Image from "next/image";
+import Link from "next/link";
+
+const featuredWorks = [
+  {
+    title: "Happy Dog Playing with a Stick",
+    category: "Documentary",
+    videoUrl:
+      "https://player.vimeo.com/video/1203280917?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479",
+  },
+  {
+    title: "Birds in the Rain",
+    category: "Nature Documentary",
+    videoUrl:
+      "https://player.vimeo.com/video/1203629520?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479%2Fembed",
+  },
+  {
+    title: "Pure Hydration",
+    category: "Commercial",
+    videoUrl:
+      "https://player.vimeo.com/video/1203630718?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479",
+  },
+  {
+    title: "The End of Us",
+    category: "Short Film",
+    videoUrl:
+      "https://player.vimeo.com/video/1203347568?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479",
+  },
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <main className="bg-black text-white">
+      {/* HERO */}
+      <section className="relative h-screen overflow-hidden">
+        <video
+          src="/hero.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 h-full w-full object-cover opacity-60"
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
+
+        <div className="absolute inset-0 bg-black/50" />
+
+        <div className="relative z-10 flex h-full flex-col justify-between">
+          <Navbar />
+
+          <div className="px-10 pb-20 md:px-16">
+            <p className="mb-5 text-sm font-light tracking-[0.35em] text-[#d8b46a]">
+              Photographer / Video Director
+            </p>
+
+            <h1 className="max-w-5xl text-6xl font-light uppercase leading-none tracking-[0.12em] md:text-7xl">
+              Liam Parker
+            </h1>
+
             <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              href="#my-work"
+              className="mt-8 flex h-10 w-10 items-center justify-center rounded-full border border-[#d8b46a] text-[#d8b46a] transition hover:bg-[#d8b46a] hover:text-black"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+              ↓
+            </a>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+      </section>
+
+      {/* MY WORK */}
+      <section id="my-work" className="overflow-hidden px-10 pb-28 pt-40 md:px-16 md:pt-52">
+        <div className="mb-12 flex items-end justify-between gap-8">
+          <div>
+            <p className="mb-4 text-sm tracking-[0.35em] text-[#d8b46a] uppercase">
+              Selected Work
+            </p>
+
+            <h2 className="text-4xl font-light uppercase tracking-[0.22em]">
+              My Work
+            </h2>
+          </div>
+
+          <Link
+            href="/video"
+            className="hidden text-sm tracking-[0.25em] text-white/50 uppercase transition hover:text-[#d8b46a] md:block"
           >
+            View All
+          </Link>
+        </div>
+
+        {/* Video Slide */}
+        <div className="mb-12 overflow-hidden">
+          <div className="flex w-max animate-[slide_40s_linear_infinite] gap-8">
+            {[...featuredWorks, ...featuredWorks].map((work, index) => (
+              <div
+                key={`${work.title}-${index}`}
+                className="w-[560px] shrink-0"
+              >
+                <div className="aspect-video overflow-hidden bg-white/5">
+                  <iframe
+                    src={work.videoUrl}
+                    title={work.title}
+                    className="h-full w-full"
+                    allow="autoplay; fullscreen; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ABOUT ME */}
+      <section id="about" className="px-10 py-28 md:px-40">
+        <div className="grid gap-16 md:grid-cols-[0.8fr_1.2fr]">
+          <div className="relative aspect-[4/5] h-[70vh] max-h-[720px] overflow-hidden bg-white/5">
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+              src="/Liam6.jpg"
+              alt="Liam Parker"
+              fill
+              className="object-cover"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+          </div>
+
+          <div className="flex flex-col justify-center">
+            <p className="mb-4 text-sm tracking-[0.35em] text-[#d8b46a] uppercase">
+              About Me
+            </p>
+
+            <h2 className="mb-8 max-w-2xl text-4xl font-light leading-tight">
+              Creating honest, cinematic stories through image and motion.
+            </h2>
+
+            <p className="max-w-xl text-sm leading-8 text-white/70">
+              I’m a photographer and video director based in Vancouver, creating
+              visual stories across cultures, people, and everyday moments. My
+              work focuses on emotion, atmosphere, and human connection — from
+              commercial films to documentary-driven visual projects.
+            </p>
+
+            <Link
+              href="/about"
+              className="mt-10 w-fit border border-[#d8b46a] px-8 py-3 text-sm tracking-[0.25em] text-[#d8b46a] uppercase transition hover:bg-[#d8b46a] hover:text-black"
+            >
+              More About Me
+            </Link>
+          </div>
         </div>
-      </main>
-    </div>
+      </section>
+
+      {/* CONTACT */}
+      <section id="contact" className="px-10 py-28 md:px-40">
+        <div className="border-t border-white/10 pt-16">
+          <p className="mb-4 text-sm tracking-[0.35em] text-[#d8b46a] uppercase">
+            Contact
+          </p>
+
+          <div className="grid gap-10 md:grid-cols-[1fr_auto] md:items-end">
+            <h2 className="max-w-3xl text-5xl font-light leading-tight md:text-6xl">
+              Let&apos;s create something meaningful together.
+            </h2>
+
+            <Link
+              href="/contact"
+              className="w-fit border border-[#d8b46a] px-9 py-3 text-sm tracking-[0.25em] text-[#d8b46a] uppercase transition hover:bg-[#d8b46a] hover:text-black"
+            >
+              Contact
+            </Link>
+          </div>
+
+          <div className="mt-10 space-y-3 text-white/60">
+            <p className="border-l-2 border-[#d8b46a] pl-4">
+              Vancouver, BC, Canada
+            </p>
+            <p className="border-l-2 border-[#d8b46a] pl-4">
+              Available for global projects
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
   );
 }
