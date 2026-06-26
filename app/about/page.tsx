@@ -57,7 +57,7 @@ export default function AboutPage() {
 
         <div className="relative aspect-[4/5] h-[70vh] overflow-hidden">
           <img
-            src="/liam5.jpg"
+            src="/Liam5.jpg"
             alt="Behind the scenes"
             className="h-full w-full object-cover"
           />
