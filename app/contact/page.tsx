@@ -6,7 +6,7 @@ export default function Contact() {
       <Navbar />
 
       <section className="px-12 pb-24">
-        <div className="mx-auto grid max-w-6xl gap-16 py-10 md:grid-cols-[0.9fr_1fr]">
+        <div className="mx-auto grid max-w-6xl gap-16 py-10 grid-cols-[0.9fr_1fr]">
           {/* Left Side */}
           <div>
             <p className="mb-6 text-sm tracking-[0.35em] text-[#d8b46a] uppercase">
@@ -64,7 +64,7 @@ export default function Contact() {
 
           {/* Right Side */}
           <form className="space-y-5">
-            <div className="grid gap-5 md:grid-cols-2">
+            <div className="grid gap-5 grid-cols-2">
               <input
                 type="text"
                 placeholder="First Name"

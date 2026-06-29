@@ -36,10 +36,7 @@ const skills = [
   },
   {
     title: "Languages",
-    items: [
-      "English — Native",
-      "French — Professional Working Proficiency",
-    ],
+    items: ["English — Native", "French — Professional Working Proficiency"],
   },
 ];
 
@@ -52,10 +49,10 @@ export default function AboutPage() {
       <Navbar />
 
       {/* About */}
-      <section className="mx-auto grid max-w-7xl items-start gap-25 px-10 pb-28 md:grid-cols-[0.9fr_1.1fr] md:px-20">
+      <section className="mx-auto grid max-w-7xl grid-cols-[0.9fr_1.1fr] items-start gap-10 px-20 pb-28">
         {/* Images */}
 
-        <div className="relative aspect-[4/5] h-[70vh] overflow-hidden">
+        <div className="relative aspect-[4/5] h-[90vh] overflow-hidden">
           <img
             src="/Liam5.jpg"
             alt="Behind the scenes"
@@ -113,7 +110,7 @@ export default function AboutPage() {
             Skills
           </h2>
 
-          <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-12 grid-cols-4">
             {skills.map((skill) => (
               <div key={skill.title}>
                 <h3 className="mb-5 text-xs font-semibold uppercase tracking-[0.35em] text-[#d8b46a]">

@@ -113,7 +113,7 @@ export default function Home() {
 
       {/* ABOUT ME */}
       <section id="about" className="px-10 py-28 md:px-40">
-        <div className="grid gap-16 md:grid-cols-[0.8fr_1.2fr]">
+        <div className="grid grid-cols-[0.8fr_1.2fr] gap-16">
           <div className="relative aspect-[4/5] h-[70vh] max-h-[720px] overflow-hidden bg-white/5">
             <Image
               src="/Liam6.jpg"
@@ -156,7 +156,7 @@ export default function Home() {
             Contact
           </p>
 
-          <div className="grid gap-10 md:grid-cols-[1fr_auto] md:items-end">
+          <div className="grid grid-cols-[1fr_auto] items-end">
             <h2 className="max-w-3xl text-5xl font-light leading-tight md:text-6xl">
               Let&apos;s create something meaningful together.
             </h2>
