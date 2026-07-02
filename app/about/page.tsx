@@ -49,7 +49,7 @@ export default function AboutPage() {
       <Navbar />
 
       {/* About */}
-      <section className="mx-auto grid max-w-7xl grid-cols-[0.9fr_1.1fr] items-start gap-10 px-20 pb-28">
+      <section className="mx-auto grid max-w-7xl grid-cols-[0.9fr_1.1fr] items-start gap-20 px-20 pb-28">
         {/* Images */}
 
         <div className="relative aspect-[4/5] h-[90vh] overflow-hidden">
